@@ -17,7 +17,10 @@ against low-frequency and evolving threats.
 - Modern network intrusion dataset with multiple attack categories
 - Used for both flow-level and sequence-level evaluation
 
-> Dataset files are not included in this repository.
+> Dataset files are not included in this repository. Dataset files are expected to be stored externally and referenced via absolute
+paths or environment variables. Large data files are intentionally excluded
+from version control.
+
 
 ## Project Scope
 This repository benchmarks:
