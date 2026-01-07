@@ -79,6 +79,7 @@ def main():
         batch_size=64,
         verbose=2,
     )
+    model.save("artifacts/gru_baseline")
 
     y_pred = (model.predict(X_test) > 0.5).astype(int)
 
