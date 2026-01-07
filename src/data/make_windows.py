@@ -18,12 +18,18 @@ def make_fixed_windows(
     """
     X, y = [], []
 
-    values = df[feature_cols].values
-    labels = df[label_col].values
+    values = df[feature_cols].to_numpy()
+    labels = df[label_col].to_numpy()
 
     for start in range(0, len(df) - window_size + 1, step):
         end = start + window_size
+
         X.append(values[start:end])
-        y.append(np.bincount(labels[start:end]).argmax())
+
+        window_labels = labels[start:end]
+
+        # Majority label for the window (works for strings OR ints)
+        uniq, counts = np.unique(window_labels, return_counts=True)
+        y.append(uniq[counts.argmax()])
 
     return np.array(X), np.array(y)
